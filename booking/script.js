@@ -58,7 +58,6 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
     if (tourPlan.value === '') {
         showPopup('Please select a tour plan.');
         event.preventDefault();
-        return;
     }
 });
 
@@ -66,6 +65,13 @@ document.getElementById('bookingForm').addEventListener('submit', function(event
 function showPopup(message) {
     const popup = document.getElementById('popup');
     const popupMessage = document.getElementById('popup-message');
+    const popupHeadingElement = document.querySelector(".popup-content h3");
+
+    console.log('triger');
+
+    //Change pop up message title
+    popupHeadingElement.innerHTML = "Error";
+    popupMessage.style.color = "#d9534f";
     
     popupMessage.textContent = message;
     popup.style.display = 'flex';  // Show the popup

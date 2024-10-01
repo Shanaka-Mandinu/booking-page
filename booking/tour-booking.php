@@ -12,7 +12,7 @@
     <div id="popup" class="popup">
         <div class="popup-content">
             <span id="close-popup" class="close">&times;</span>
-            <h3>Error</h3>
+            <h3>Notification</h3>
             <p id="popup-message"></p>
             <button id="popup-ok">OK</button>
         </div>
@@ -57,6 +57,55 @@
     </section>
 
 
+    <script>
+        // Show popup function with message type
+        function showPopup(message, type) {
+            // Get the elements
+            const popupMessageElement = document.getElementById("popup-message");
+            const popupHeadingElement = document.querySelector(".popup-content h3");
+
+            // Set the message
+            popupMessageElement.innerHTML = message;
+
+            // Change heading based on type
+            switch (type) {
+                case 'error':
+                    popupHeadingElement.innerHTML = "Error";
+                    popupMessageElement.style.color = "#d9534f";
+                    break;
+                case 'success':
+                    popupHeadingElement.innerHTML = "Success";
+                    popupMessageElement.style.color = "#5cb85c";
+                    break;
+                default:
+                    popupHeadingElement.innerHTML = "Notification";
+                    popupMessageElement.style.color = "#000";
+                    break;
+            }
+
+
+            document.getElementById("popup").style.display = "flex";
+            history.replaceState(null, document.title, window.location.pathname);
+        }
+
+
+        document.getElementById("popup-ok").onclick = function () {
+            document.getElementById("popup").style.display = "none";
+        }
+
+
+        document.getElementById("close-popup").onclick = function () {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const popupMessage = urlParams.get('popupMessage');
+        const popupType = urlParams.get('popupType');
+
+        if (popupMessage) {
+            showPopup(popupMessage, popupType);
+        }
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
