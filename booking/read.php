@@ -3,9 +3,21 @@ include '../conf.php';
 
 $sql = "SELECT * FROM bookings";
 $result = $conn->query($sql);
+?>
 
-if($result->num_rows>0){
-    echo "<table border='1'>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookings</title>
+    <link rel="stylesheet" type="text/css" href="read.css"> <!-- Link to your CSS file -->
+</head>
+<body>
+
+<?php
+if($result->num_rows > 0){
+    echo "<table>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -34,10 +46,12 @@ if($result->num_rows>0){
                     <a href='delete.php?id=".$row['id']."'>Delete</a>
                 </td>
             </tr>";
-        }
-        echo "</table>";
+    }
+    echo "</table>";
 } else {
-    echo "No bookings found.";   
+    echo "<p>No bookings found.</p>";
 }
-
 ?>
+
+</body>
+</html>

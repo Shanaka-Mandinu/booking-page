@@ -1,5 +1,5 @@
 <?php
-include 'conf.php';
+include '../conf.php';
 
 $id = $_GET['id'];
 $sql = "DELETE FROM bookings WHERE id='$id'";

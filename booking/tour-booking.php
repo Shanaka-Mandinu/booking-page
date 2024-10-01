@@ -43,9 +43,9 @@
             <label for="tour-plan">Tour Package</label>
             <select name="tour_plan" id="tour-plan">
                 <option value="" disabled selected>Select a Plan</option>
-                <option value="basic">Light Plan</option>
-                <option value="premium">Basic Plan</option>
-                <option value="luxury">Premium Plan</option>
+                <option value="light">Light Plan</option>
+                <option value="basic">Basic Plan</option>
+                <option value="premium">Premium Plan</option>
             </select>
             
             <label for="special-requests">Special Requests</label>
