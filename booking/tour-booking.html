@@ -33,12 +33,22 @@
                 <button class="btn-book">Book Now</button>
             </div>
         </div>-->
-    </section>
+    <!-- </section> -->
+
+    <!-- Custom Popup Modal -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span id="close-popup" class="close">&times;</span>
+            <h3>Error</h3>
+            <p id="popup-message"></p>
+            <button id="popup-ok">OK</button>
+        </div>
+    </div>
 
     <!-- Booking Form Section -->
     <section class="booking-form">
         <h2>Book Your Tour</h2>
-        <form>
+        <form id="bookingForm">
             <label for="name">Full Name</label>
             <input type="text" id="name" placeholder="Your Full Name">
 
@@ -75,7 +85,7 @@
         </form>
     </section>
 
-    
+
     <script src="script.js"></script>
 </body>
 </html>
