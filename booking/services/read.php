@@ -17,6 +17,7 @@ $result = $conn->query($sql);
 <body>
 
 
+
 <?php
 if($result->num_rows > 0){
     echo "<table>
@@ -45,6 +46,7 @@ if($result->num_rows > 0){
                 <td>".$row['special_requests']."</td>
                 <td>
                     <div style='display:flex; justify-content:space-around;'>
+                        <a href='javascript:void(0);' onclick='showLoadingAndNavigate(".$row['id'].")' class='edit'>Edit</a> | 
                         <a href='javascript:void(0);' onclick='showLoadingAndNavigate(".$row['id'].")' class='edit'>Edit</a> | 
                         <a href='javascript:void(0);' onclick='showDeletePopup(".$row['id'].")' class='delete'>Delete</a>
                     </div>
