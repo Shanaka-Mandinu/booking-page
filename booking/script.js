@@ -69,15 +69,15 @@ function showPopup(message) {
 
     console.log('triger');
 
-    //Change pop up message title
+
     popupHeadingElement.innerHTML = "Error";
     popupMessage.style.color = "#d9534f";
     
     popupMessage.textContent = message;
-    popup.style.display = 'flex';  // Show the popup
+    popup.style.display = 'flex';  
 }
 
-// Close the popup when clicking the close button or the "OK" button
+
 document.getElementById('close-popup').addEventListener('click', function() {
     closePopup();
 });
@@ -88,5 +88,5 @@ document.getElementById('popup-ok').addEventListener('click', function() {
 
 function closePopup() {
     const popup = document.getElementById('popup');
-    popup.style.display = 'none';  // Hide the popup
+    popup.style.display = 'none'; 
 }

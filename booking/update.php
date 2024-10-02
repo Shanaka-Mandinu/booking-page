@@ -10,37 +10,52 @@ if ($result->num_rows > 0) {
     // Populate form with current data
 ?>
 
-<form method="POST">
-    <label for="name">Full Name</label>
-    <input type="text" name="name" value="<?php echo $row['name']; ?>" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<section class="booking-form">
+    <h2>Update booking details</h2>
+    <form method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" value="<?php echo $row['name']; ?>" required>
 
-    <label for="email">Email</label>
-    <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
+        <label for="email">Email</label>
+        <input type="email" name="email" value="<?php echo $row['email']; ?>" required>
 
-    <label for="phone">Phone</label>
-    <input type="text" name="phone" value="<?php echo $row['phone']; ?>">
+        <label for="phone">Phone</label>
+        <input type="text" name="phone" value="<?php echo $row['phone']; ?>">
 
-    <label for="address">Address</label>
-    <input type="text" name="address" value="<?php echo $row['address']; ?>">
+        <label for="address">Address</label>
+        <input type="text" name="address" value="<?php echo $row['address']; ?>">
 
-    <label for="travelers">Number of Travelers</label>
-    <input type="number" name="travelers" value="<?php echo $row['travelers']; ?>">
+        <label for="travelers">Number of Travelers</label>
+        <input type="number" name="travelers" value="<?php echo $row['travelers']; ?>">
 
-    <label for="date">Travel Dates</label>
-    <input type="date" name="date" value="<?php echo $row['travel_date']; ?>">
+        <label for="date">Travel Dates</label>
+        <input type="date" name="date" value="<?php echo $row['travel_date']; ?>">
 
-    <label for="tour-plan">Tour Package</label>
-    <select name="tour-plan">
-        <option value="basic" <?php if ($row['tour_plan'] == 'light') echo 'selected'; ?>>Light Plan</option>
-        <option value="premium" <?php if ($row['tour_plan'] == 'basic') echo 'selected'; ?>>Basic Plan</option>
-        <option value="luxury" <?php if ($row['tour_plan'] == 'premium') echo 'selected'; ?>>Premium Plan</option>
-    </select>
+        <label for="tour-plan">Tour Package</label>
+        <select name="tour-plan">
+            <option value="basic" <?php if ($row['tour_plan'] == 'light') echo 'selected'; ?>>Light Plan</option>
+            <option value="premium" <?php if ($row['tour_plan'] == 'basic') echo 'selected'; ?>>Basic Plan</option>
+            <option value="luxury" <?php if ($row['tour_plan'] == 'premium') echo 'selected'; ?>>Premium Plan</option>
+        </select>
 
-    <label for="special-requests">Special Requests</label>
-    <textarea name="special-requests"><?php echo $row['special_requests']; ?></textarea>
+        <label for="special-requests">Special Requests</label>
+        <textarea name="special-requests"><?php echo $row['special_requests']; ?></textarea>
 
-    <input type="submit" name="update" value="Update Booking">
-</form>
+        <input type="submit" name="update" value="Update Booking">
+    </form>
+</section>
+</body>
+</html>
+
 
 <?php
 }
@@ -60,7 +75,8 @@ if (isset($_POST['update'])) {
             WHERE id='$id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Booking updated successfully!";
+        header('Location: read.php');
+        exit();
     } else {
         echo "Error updating record: " . $conn->error;
     }

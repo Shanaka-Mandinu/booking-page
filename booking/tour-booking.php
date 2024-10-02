@@ -58,16 +58,16 @@
 
 
     <script>
-        // Show popup function with message type
+
         function showPopup(message, type) {
-            // Get the elements
+
             const popupMessageElement = document.getElementById("popup-message");
             const popupHeadingElement = document.querySelector(".popup-content h3");
 
-            // Set the message
+  
             popupMessageElement.innerHTML = message;
 
-            // Change heading based on type
+   
             switch (type) {
                 case 'error':
                     popupHeadingElement.innerHTML = "Error";
