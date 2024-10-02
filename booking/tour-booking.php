@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tour Booking Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
     <!-- Booking Form Section -->
     <section class="booking-form">
         <h2>Book Your Tour</h2>
-        <form id="bookingForm" action="create.php" method="post">
+        <form id="bookingForm" action="services/create.php" method="post">
             <label for="name">Full Name</label>
             <input name="name" type="text" id="name" placeholder="Your Full Name">
 
@@ -58,16 +58,16 @@
 
 
     <script>
-        // Show popup function with message type
+
         function showPopup(message, type) {
-            // Get the elements
+
             const popupMessageElement = document.getElementById("popup-message");
             const popupHeadingElement = document.querySelector(".popup-content h3");
 
-            // Set the message
+  
             popupMessageElement.innerHTML = message;
 
-            // Change heading based on type
+   
             switch (type) {
                 case 'error':
                     popupHeadingElement.innerHTML = "Error";

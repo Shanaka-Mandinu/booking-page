@@ -1,5 +1,5 @@
 <?php
-include '../conf.php';
+include '../../conf.php';
 
 $sql = "SELECT * FROM bookings";
 $result = $conn->query($sql);
@@ -11,9 +11,11 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bookings</title>
-    <link rel="stylesheet" type="text/css" href="read.css"> <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="../styles/read.css">
+    <link rel="stylesheet" href="../styles/loading-animation.css">
 </head>
 <body>
+
 
 <?php
 if($result->num_rows > 0){
@@ -43,7 +45,7 @@ if($result->num_rows > 0){
                 <td>".$row['special_requests']."</td>
                 <td>
                     <div style='display:flex; justify-content:space-around;'>
-                        <a href='update.php?id=".$row['id']."' class='edit'>Edit</a> | 
+                        <a href='javascript:void(0);' onclick='showLoadingAndNavigate(".$row['id'].")' class='edit'>Edit</a> | 
                         <a href='javascript:void(0);' onclick='showDeletePopup(".$row['id'].")' class='delete'>Delete</a>
                     </div>
                 </td>
@@ -54,6 +56,21 @@ if($result->num_rows > 0){
     echo "<p>No bookings found.</p>";
 }
 ?>
+
+<!-- Loading Spinner with Background Overlay -->
+
+<div id="loadingOverlay" class="overlay">
+    <div class="dot-spinner">
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+        <div class="dot-spinner__dot"></div>
+    </div>
+</div>
 
 <!-- Custom Popup Modal -->
 
@@ -84,6 +101,14 @@ if($result->num_rows > 0){
         if(deleteId !== null) {
             window.location.href = 'delete.php?id=' + deleteId;
         }
+    }
+
+    function showLoadingAndNavigate(id) {
+        document.getElementById('loadingOverlay').style.display = 'flex';
+        setTimeout(function() {
+            
+            window.location.href = 'update.php?id=' + id;
+        }, 500);
     }
 </script>
 

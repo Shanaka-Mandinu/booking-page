@@ -1,5 +1,5 @@
 <?php
-    include '../conf.php';
+    include '../../conf.php';
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $name = $_POST['name'];
@@ -26,7 +26,7 @@
         }
         $conn->close();
 
-        header("Location:tour-booking.php?popupMessage=" . urlencode($popupMessage) . "&popupType=" . $popupType);
+        header("Location:../tour-booking.php?popupMessage=" . urlencode($popupMessage) . "&popupType=" . $popupType);
         exit();
     }
 ?>
